@@ -42,7 +42,7 @@ const waitForDb = async (retries = 30, delay = 2000) => {
 
 // Function to seed admin user if not exists
 const seedAdminUser = async () => {
-  const name = process.env.ADMIN_NAME || 'Admin User';
+  const name = process.env.ADMIN_NAME || 'JAYESH';
   const email = process.env.ADMIN_EMAIL || 'admin@example.com';
   const password = process.env.ADMIN_PASSWORD || 'admin123';
   const role = process.env.ADMIN_ROLE || 'admin';
