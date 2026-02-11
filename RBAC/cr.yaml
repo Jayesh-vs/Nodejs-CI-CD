@@ -1,0 +1,34 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: jenkins-cluster-role
+rules:
+
+# Core resources
+- apiGroups: [""]
+  resources:
+    - secrets
+    - configmaps
+    - services
+    - persistentvolumeclaims
+    - pods
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Apps resources
+- apiGroups: ["apps"]
+  resources:
+    - deployments
+    - replicasets
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# Storage resources (NEW FIX)
+- apiGroups: ["storage.k8s.io"]
+  resources:
+    - storageclasses
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+# PersistentVolume (cluster scoped)
+- apiGroups: [""]
+  resources:
+    - persistentvolumes
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
